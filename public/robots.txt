@@ -1,0 +1,2 @@
+User-agent: * Disallow: /admin
+Sitemap: https://kingsofshinellc.com/sitemap.xml
