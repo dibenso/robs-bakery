@@ -1,39 +1,40 @@
-import dynamic from "next/dynamic";
+import { useState, useEffect } from "react";
 import Head from "next/head";
-import Link from "next/link";
-import { Jumbotron } from "react-bootstrap";
-import { Motion, spring } from "react-motion";
-import {
-  FaPhoneAlt,
-  FaMailBulk,
-  FaInstagramSquare,
-  FaFacebookSquare,
-  FaYelp,
-  FaRegLightbulb,
-  FaWater,
-  FaShuttleVan
-} from "react-icons/fa";
-import { Element } from "react-scroll";
+import { Jumbotron, Button } from "react-bootstrap";
+import { FaMailBulk, FaPhoneAlt, FaFacebookSquare, FaInstagramSquare, FaYelp } from "react-icons/fa";
 import Layout from "../components/layout";
-import Services from "../components/services";
 import ContactForm from "../components/contactForm";
+import { smoothScroll } from "../util";
 import { APP_NAME } from "../constants";
 
 const styles = {
-  jumbotronText: { fontSize: 40, textAlign: "center" },
-  section: { textAlign: "center", backgroundColor: "black", paddingTop: "10px", paddingBottom: "10px" },
-  sectionHeaderText: { fontWeight: "bold" },
-  sectionText: { fontSize: 18, marginLeft: 30, marginRight: 30 },
-  sectionImage: { width: "50%", maxHeight: "500px" },
-  contactItem: { textDecoration: "none" },
-  aboutIcon: { padding: "10px" },
-  fbLikeShare: { margin: 20 },
-  policyTerms: { margin: 20 }
+  jumbotronText: { fontSize: 50 },
+  header: {
+    background: "url(images/background.jpg) center center fixed",
+    margin: 0,
+    height: "100vh"
+  },
+  section: {
+    paddingLeft: "5%",
+    paddingRight: "5%",
+    textAlign: "center",
+    color: "black",
+    marginBottom: 0,
+    fontSize: "1.5rem"
+  }
 };
 
-const PictureCarousel = dynamic(() => import('../components/carousel'), { ssr: false });
-
 export default function Home() {
+  const [degrees, setDegrees] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      if (degrees === 360) setDegrees(0);
+      else setDegrees(currentDegrees => currentDegrees + 1);
+    }, 20);
+    return () => clearInterval(interval);
+  }, []);
+
   return (
     <Layout isIndexPage>
       <Head>
@@ -61,117 +62,86 @@ export default function Home() {
         nonce="YQqhaBhv"
       />
       <script async src="https://www.instagram.com/embed.js" />
-      <Jumbotron fluid style={{ ...styles.section, marginTop: "20px" }}>
-        <Motion defaultStyle={{ opacity: 0.1 }} style={{ opacity: spring(1, { stiffness: 20, damping: 10 }) }}>
-          {interpolatingStyle => (
-            <div>
-              <h1 style={{ ...styles.jumbotronText, opacity: interpolatingStyle.opacity }}>We Come To You,</h1>
-              <h1 style={{ ...styles.jumbotronText, opacity: interpolatingStyle.opacity }}>
-                Providing Our Own Water And Electricity.
-              </h1>
-              <div>
-                <FaShuttleVan
-                  color="white"
-                  size={200}
-                  style={{ ...styles.aboutIcon, opacity: interpolatingStyle.opacity }}
-                />
-              </div>
-              <FaWater color="white" size={100} style={{ ...styles.aboutIcon, opacity: interpolatingStyle.opacity }} />
-              <FaRegLightbulb
-                color="white"
-                size={100}
-                style={{ ...styles.aboutIcon, opacity: interpolatingStyle.opacity }}
-              />
-            </div>
-          )}
-        </Motion>
-      </Jumbotron>
-      <Element name="about">
-        <Jumbotron fluid style={styles.section}>
-          <h1 style={styles.sectionHeaderText}>What We Do?</h1>
-          <p style={styles.sectionText}>
-            Our company is a unique mobile detailing service trained to detail cars, vans, motorcycles, and trucks
-            inside and out. Not only do we travel to you, but we ONLY use the highest quality products to assure the
-            best detailing experience. We provide our own electricity and water creating minimal work for you! We
-            provide a variety of packages, offering different services so you can decide what best fits for your
-            vehicle. No matter the package, satisfaction is guaranteed.
+      <Jumbotron fluid style={styles.header} id="home">
+        <div style={{ paddingLeft: "5%", paddingRight: "5%" }}>
+          <h1 style={{ ...styles.jumbotronText, fontWeight: "bold", color: "black" }}>{`Welcome To ${APP_NAME}`}</h1>
+          <p style={{ fontSize: 20, fontWeight: "bold", color: "black" }}>The most delicious bakery around!</p>
+          <p style={{ marginTop: "20vh" }}>
+            <Button variant="primary" size="lg" block onClick={() => smoothScroll("menu")}>
+              Check out our menu
+            </Button>
+            <Button variant="secondary" size="lg" block onClick={() => smoothScroll("contact")}>
+              Get in touch with us
+            </Button>
           </p>
-          <PictureCarousel />
-        </Jumbotron>
-      </Element>
-      <Jumbotron fluid style={styles.section}>
-        <h1 style={styles.sectionHeaderText}>Our Mission</h1>
-        <p style={styles.sectionText}>
-          Here at, Kings of Shine, our mission is to provide high quality detailing services to your front door, office
-          parking lot, or wherever is most convenient for you. We take the hassle out of going to the car wash by
-          bringing the shine to you!
-        </p>
-        <img
-          src="images/handshake.png"
-          alt="Handshake"
-          style={{ ...styles.sectionImage, width: "100%", borderRadius: "10px" }}
-        />
+        </div>
       </Jumbotron>
-      <Element name="services">
-        <Jumbotron fluid style={styles.section}>
-          <h1 style={{ ...styles.sectionHeaderText, textAlign: "center", marginBottom: "20px" }}>Our Services</h1>
-          <Services />
-        </Jumbotron>
-      </Element>
-      <Element name="contact">
-        <Jumbotron fluid style={styles.section}>
-          <div style={styles.section}>
-            <h1 style={styles.sectionHeaderText}>Contact Us</h1>
-            <div style={{ marginBottom: "15px" }}>
-              <a href="tel:1-914-217-2507" style={styles.contactItem}>
-                <FaPhoneAlt />
-                {" (914) 217-2507"}
-              </a>
-            </div>
-            <div style={{ marginBottom: "15px" }}>
-              <a href="mailto:kingsofshine@outlook.com" style={styles.contactItem}>
-                <FaMailBulk />
-                {" KingsofShine@outlook.com"}
-              </a>
-            </div>
-            <a href="https://www.facebook.com/KingsofShine-444130726167039/" style={styles.contactItem}>
-              <FaFacebookSquare size={60} color="white" />
+      <Jumbotron fluid style={{ ...styles.section, backgroundColor: "#80ffff" }} id="about">
+        <img
+          src="/images/donut.png"
+          alt="Donut"
+          style={{ marginBottom: 50, width: "75%", transform: `rotate(${degrees}deg)` }}
+        />
+        <div style={styles.section}>
+          <p>
+            {`${APP_NAME} seeks to bring quality fresh bakery foods to our customers. We're committed to providing unique treats to everyone. Stop by today to try out some of our delicious desserts, cookies, cakes, and more!`}
+          </p>
+        </div>
+      </Jumbotron>
+      <Jumbotron fluid style={{ ...styles.section, backgroundColor: "#d1aed7" }} id="menu">
+        <p>Menu item</p>
+        <p>Menu item</p>
+        <p>Menu item</p>
+        <p>Menu item</p>
+        <p>Menu item</p>
+        <p>Menu item</p>
+        <p>Menu item</p>
+        <p>Menu item</p>
+        <p>Menu item</p>
+        <p>Menu item</p>
+        <p>Menu item</p>
+      </Jumbotron>
+      <Jumbotron id="contact" fluid style={{ paddingTop: 0, marginBottom: 0, backgroundColor: "#ff80c0" }}>
+        <img src="/images/melting.png" alt="Melting Chocolate" style={{ width: "100%" }} />
+        <div style={styles.section}>
+          <h1 style={styles.sectionHeaderText}>Contact Us</h1>
+          <div style={{ marginBottom: "15px" }}>
+            <a href="tel:1-914-217-2507" style={styles.contactItem}>
+              <FaPhoneAlt />
+              {" (914) 217-2507"}
             </a>
-            <a href="https://www.instagram.com/kingsofshine_llc/" style={styles.contactItem}>
-              <FaInstagramSquare size={60} color="white" />
-            </a>
-            <a
-              href="https://www.yelp.com/biz/kings-of-shine-mobile-detailing-franklin-township"
-              style={styles.contactItem}>
-              <FaYelp size={60} color="white" />
-            </a>
-            <div style={styles.fbLikeShare}>
-              <div
-                className="fb-like"
-                data-href="https://kingsofshinellc.com/"
-                data-width="80"
-                data-layout="button_count"
-                data-action="like"
-                data-size="large"
-                data-share="true"
-              />
-            </div>
-            <ContactForm />
           </div>
-        </Jumbotron>
-      </Element>
-      <div id="contact" style={styles.section}>
-        <footer>
-          <p>Kings Of Shine © 2021</p>
-          <Link href="/policy" style={styles.policyTerms}>
-            Privacy Policy
-          </Link>
-          {` | `}
-          <Link href="/terms" style={styles.policyTerms}>
-            Terms of Service
-          </Link>
-        </footer>
-      </div>
+          <div style={{ marginBottom: "15px" }}>
+            <a href="mailto:kingsofshine@outlook.com" style={styles.contactItem}>
+              <FaMailBulk />
+              {" KingsofShine@outlook.com"}
+            </a>
+          </div>
+          <a href="https://www.facebook.com/KingsofShine-444130726167039/" style={styles.contactItem}>
+            <FaFacebookSquare size={60} color="white" />
+          </a>
+          <a href="https://www.instagram.com/kingsofshine_llc/" style={styles.contactItem}>
+            <FaInstagramSquare size={60} color="white" />
+          </a>
+          <a
+            href="https://www.yelp.com/biz/kings-of-shine-mobile-detailing-franklin-township"
+            style={styles.contactItem}>
+            <FaYelp size={60} color="white" />
+          </a>
+          <div style={styles.fbLikeShare}>
+            <div
+              className="fb-like"
+              data-href="https://kingsofshinellc.com/"
+              data-width="80"
+              data-layout="button_count"
+              data-action="like"
+              data-size="large"
+              data-share="true"
+            />
+          </div>
+          <ContactForm />
+        </div>
+      </Jumbotron>
     </Layout>
   );
 }
