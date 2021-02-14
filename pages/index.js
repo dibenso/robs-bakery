@@ -43,16 +43,6 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
         <meta httpEquiv="Content-Type" content="text/html; charset=utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta
-          name="description"
-          content="The Best Detailing Service Around Somerset, New Jersey. We Come To You And Provide Our Own Water And Electricity"
-        />
-        <meta property="og:title" content={APP_NAME} />
-        <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://kingsofshinellc.com/" />
-        <meta property="og:image" content="https://kingsofshinellc.com/images/logo.jpg" />
-        <meta property="og:description" content="Mobile Detailing Near Somerset, New Jersey" />
-        <meta property="fb:app_id" content="165428122010707" />
       </Head>
       <div id="fb-root" />
       <script
@@ -121,17 +111,6 @@ export default function Home() {
               style={styles.contactItem}>
               <FaYelp size={60} color="#53230c" />
             </a>
-          </div>
-          <div style={styles.fbLikeShare}>
-            <div
-              className="fb-like"
-              data-href="https://kingsofshinellc.com/"
-              data-width="80"
-              data-layout="button_count"
-              data-action="like"
-              data-size="large"
-              data-share="true"
-            />
           </div>
           <ContactForm />
         </div>
