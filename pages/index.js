@@ -76,7 +76,7 @@ export default function Home() {
           </p>
         </div>
       </Jumbotron>
-      <Jumbotron fluid style={{ ...styles.section, backgroundColor: "#80ffff" }} id="about">
+      <Jumbotron fluid style={{ ...styles.section, backgroundColor: "#ff80c0" }} id="about">
         <img
           src="/images/donut.png"
           alt="Donut"
@@ -101,7 +101,7 @@ export default function Home() {
         <p>Menu item</p>
         <p>Menu item</p>
       </Jumbotron>
-      <Jumbotron id="contact" fluid style={{ paddingTop: 0, marginBottom: 0, backgroundColor: "#ff80c0" }}>
+      <Jumbotron id="contact" fluid style={{ paddingTop: 0, marginBottom: 0, backgroundColor: "#bac5e2" }}>
         <img src="/images/melting.png" alt="Melting Chocolate" style={{ width: "100%" }} />
         <div style={styles.section}>
           <h1 style={styles.sectionHeaderText}>Contact Us</h1>
@@ -117,17 +117,19 @@ export default function Home() {
               {" KingsofShine@outlook.com"}
             </a>
           </div>
-          <a href="https://www.facebook.com/KingsofShine-444130726167039/" style={styles.contactItem}>
-            <FaFacebookSquare size={60} color="white" />
-          </a>
-          <a href="https://www.instagram.com/kingsofshine_llc/" style={styles.contactItem}>
-            <FaInstagramSquare size={60} color="white" />
-          </a>
-          <a
-            href="https://www.yelp.com/biz/kings-of-shine-mobile-detailing-franklin-township"
-            style={styles.contactItem}>
-            <FaYelp size={60} color="white" />
-          </a>
+          <div style={{ marginBottom: 20 }}>
+            <a href="https://www.facebook.com/KingsofShine-444130726167039/" style={styles.contactItem}>
+              <FaFacebookSquare size={60} color="#53230c" />
+            </a>
+            <a href="https://www.instagram.com/kingsofshine_llc/" style={styles.contactItem}>
+              <FaInstagramSquare size={60} color="#53230c" />
+            </a>
+            <a
+              href="https://www.yelp.com/biz/kings-of-shine-mobile-detailing-franklin-township"
+              style={styles.contactItem}>
+              <FaYelp size={60} color="#53230c" />
+            </a>
+          </div>
           <div style={styles.fbLikeShare}>
             <div
               className="fb-like"
