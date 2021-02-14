@@ -3,6 +3,7 @@ import Head from "next/head";
 import { Jumbotron, Button } from "react-bootstrap";
 import { FaMailBulk, FaPhoneAlt, FaFacebookSquare, FaInstagramSquare, FaYelp } from "react-icons/fa";
 import Layout from "../components/layout";
+import Menu from "../components/menu";
 import ContactForm from "../components/contactForm";
 import { smoothScroll } from "../util";
 import { APP_NAME } from "../constants";
@@ -80,7 +81,7 @@ export default function Home() {
         <img
           src="/images/donut.png"
           alt="Donut"
-          style={{ marginBottom: 50, width: "75%", transform: `rotate(${degrees}deg)` }}
+          style={{ marginBottom: 50, width: 250, height: 250, transform: `rotate(${degrees}deg)` }}
         />
         <div style={styles.section}>
           <p>
@@ -89,17 +90,8 @@ export default function Home() {
         </div>
       </Jumbotron>
       <Jumbotron fluid style={{ ...styles.section, backgroundColor: "#d1aed7" }} id="menu">
-        <p>Menu item</p>
-        <p>Menu item</p>
-        <p>Menu item</p>
-        <p>Menu item</p>
-        <p>Menu item</p>
-        <p>Menu item</p>
-        <p>Menu item</p>
-        <p>Menu item</p>
-        <p>Menu item</p>
-        <p>Menu item</p>
-        <p>Menu item</p>
+        <h1>Our Delicious Menu</h1>
+        <Menu />
       </Jumbotron>
       <Jumbotron id="contact" fluid style={{ paddingTop: 0, marginBottom: 0, backgroundColor: "#bac5e2" }}>
         <img src="/images/melting.png" alt="Melting Chocolate" style={{ width: "100%" }} />
