@@ -1,2 +1,2 @@
-export const APP_NAME = "Kings of Bakery";
+export const APP_NAME = "Emilia's Cake & Bake";
 export const THEME = "";

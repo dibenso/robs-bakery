@@ -43,6 +43,13 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
         <meta httpEquiv="Content-Type" content="text/html; charset=utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="description" content="Customized Cakes and Cupcakes ✨" />
+        <meta property="og:title" content={APP_NAME} />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="" />
+        <meta property="og:image" content="" />
+        <meta property="og:description" content="" />
+        <meta property="fb:app_id" content="" />
       </Head>
       <div id="fb-root" />
       <script
