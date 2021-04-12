@@ -94,29 +94,9 @@ export default function Home() {
         <img src="/images/melting.png" alt="Melting Chocolate" style={{ width: "100%" }} />
         <div style={styles.section}>
           <h1 style={styles.sectionHeaderText}>Contact Us</h1>
-          <div style={{ marginBottom: "15px" }}>
-            <a href="tel:1-914-217-2507" style={styles.contactItem}>
-              <FaPhoneAlt />
-              {" (914) 217-2507"}
-            </a>
-          </div>
-          <div style={{ marginBottom: "15px" }}>
-            <a href="mailto:kingsofshine@outlook.com" style={styles.contactItem}>
-              <FaMailBulk />
-              {" KingsofShine@outlook.com"}
-            </a>
-          </div>
           <div style={{ marginBottom: 20 }}>
-            <a href="https://www.facebook.com/KingsofShine-444130726167039/" style={styles.contactItem}>
-              <FaFacebookSquare size={60} color="#53230c" />
-            </a>
-            <a href="https://www.instagram.com/kingsofshine_llc/" style={styles.contactItem}>
-              <FaInstagramSquare size={60} color="#53230c" />
-            </a>
-            <a
-              href="https://www.yelp.com/biz/kings-of-shine-mobile-detailing-franklin-township"
-              style={styles.contactItem}>
-              <FaYelp size={60} color="#53230c" />
+            <a href="https://www.instagram.com/emilias.cakeandbake/?hl=en" style={styles.contactItem}>
+              <FaInstagramSquare size={120} color="#53230c" />
             </a>
           </div>
           <ContactForm />
