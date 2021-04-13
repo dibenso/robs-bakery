@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react";
 import Head from "next/head";
 import { Jumbotron, Button } from "react-bootstrap";
-import { FaMailBulk, FaPhoneAlt, FaFacebookSquare, FaInstagramSquare, FaYelp } from "react-icons/fa";
+import { FaInstagramSquare } from "react-icons/fa";
+import Fade from "react-reveal/Fade";
 import Layout from "../components/layout";
 import Menu from "../components/menu";
 import ContactForm from "../components/contactForm";
@@ -10,11 +11,6 @@ import { APP_NAME } from "../constants";
 
 const styles = {
   jumbotronText: { fontSize: 50 },
-  header: {
-    background: "url(images/background.jpg) center center fixed",
-    margin: 0,
-    height: "100vh"
-  },
   section: {
     paddingLeft: "5%",
     paddingRight: "5%",
@@ -60,32 +56,34 @@ export default function Home() {
         nonce="YQqhaBhv"
       />
       <script async src="https://www.instagram.com/embed.js" />
-      <Jumbotron fluid style={styles.header} id="home">
-        <div style={{ paddingLeft: "5%", paddingRight: "5%" }}>
-          <h1 style={{ ...styles.jumbotronText, fontWeight: "bold", color: "black" }}>{`Welcome To ${APP_NAME}`}</h1>
-          <p style={{ fontSize: 20, fontWeight: "bold", color: "black" }}>The most delicious bakery around!</p>
-          <p style={{ marginTop: "20vh" }}>
-            <Button variant="primary" size="lg" block onClick={() => smoothScroll("menu")}>
-              Check out our menu
-            </Button>
-            <Button variant="secondary" size="lg" block onClick={() => smoothScroll("contact")}>
-              Get in touch with us
-            </Button>
-          </p>
-        </div>
-      </Jumbotron>
-      <Jumbotron fluid style={{ ...styles.section, backgroundColor: "#ff80c0" }} id="about">
-        <img
-          src="/images/donut.png"
-          alt="Donut"
-          style={{ marginBottom: 50, width: 250, height: 250, transform: `rotate(${degrees}deg)` }}
-        />
-        <div style={styles.section}>
-          <p>
-            {`${APP_NAME} seeks to bring quality fresh bakery foods to our customers. We're committed to providing unique treats to everyone. Stop by today to try out some of our delicious desserts, cookies, cakes, and more!`}
-          </p>
-        </div>
-      </Jumbotron>
+      <Fade bottom cascade>
+        <Jumbotron fluid id="home" style={{ backgroundColor: "white" }}>
+          <div style={{ paddingLeft: "5%", paddingRight: "5%" }}>
+            <img src="/images/logo.jpg" alt="Logo" style={{ display: "block", margin: "0 auto", width: "80%" }} />
+            <p style={{ marginTop: 50 }}>
+              <Button variant="primary" size="lg" block onClick={() => smoothScroll("menu")}>
+                Check out our menu
+              </Button>
+              <Button variant="secondary" size="lg" block onClick={() => smoothScroll("contact")}>
+                Get in touch with us
+              </Button>
+            </p>
+          </div>
+        </Jumbotron>
+        <Jumbotron fluid style={{ ...styles.section, backgroundColor: "#ff80c0" }} id="about">
+          <img
+            src="/images/cupcake.png"
+            alt="Cupcake"
+            id="cupcake"
+            style={{ marginBottom: 50, width: 250, height: 250 }}
+          />
+          <div style={styles.section}>
+            <p>
+              {`${APP_NAME} seeks to bring quality fresh bakery foods to our customers. We're committed to providing unique treats to everyone. Stop by today to try out some of our delicious desserts, cookies, cakes, and more!`}
+            </p>
+          </div>
+        </Jumbotron>
+      </Fade>
       <Jumbotron fluid style={{ ...styles.section, backgroundColor: "#d1aed7" }} id="menu">
         <h1>Our Delicious Menu</h1>
         <Menu />
