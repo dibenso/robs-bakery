@@ -1,4 +1,5 @@
 import { Container, Navbar, Nav } from "react-bootstrap";
+import { FaInstagramSquare } from "react-icons/fa";
 import { smoothScroll } from "../util";
 import { APP_NAME } from "../constants";
 
@@ -25,7 +26,7 @@ export default function Layout({ isIndexPage, children }) {
   return (
     <div id="home" style={styles.appContainer}>
       <Navbar bg="dark" variant="dark" expand="lg" sticky="top">
-        <Navbar.Brand href="/" style={styles.navbarBrand}>
+        <Navbar.Brand className="mx-auto" href="/" style={styles.navbarBrand}>
           {APP_NAME}
         </Navbar.Brand>
         <Navbar.Toggle />
@@ -33,6 +34,12 @@ export default function Layout({ isIndexPage, children }) {
           <Nav>
             {isIndexPage ? (
               <div>
+                <Nav.Link
+                  href="https://www.instagram.com/emilias.cakeandbake/?hl=en"
+                  target="_blank"
+                  style={styles.navbarLinks}>
+                  <FaInstagramSquare size={30} color="white" />
+                </Nav.Link>
                 <Nav.Link href="#contact" style={styles.navbarLinks} onClick={() => smoothScroll("contact")}>
                   Contact
                 </Nav.Link>
@@ -48,6 +55,14 @@ export default function Layout({ isIndexPage, children }) {
               </div>
             ) : (
               <div>
+                <Nav.Link
+                  href="https://www.instagram.com/emilias.cakeandbake/?hl=en"
+                  target="_blank"
+                  style={styles.navbarLinks}>
+                  <a href="https://www.instagram.com/emilias.cakeandbake/?hl=en" style={styles.contactItem}>
+                    <FaInstagramSquare size={30} color="white" />
+                  </a>
+                </Nav.Link>
                 <Nav.Link href="/#contact" style={styles.navbarLinks}>
                   Contact
                 </Nav.Link>

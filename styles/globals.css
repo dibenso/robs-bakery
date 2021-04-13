@@ -21,3 +21,23 @@ a {
 * {
   box-sizing: border-box;
 }
+
+@keyframes pulse {
+  0% { opacity: 0.5; }
+  10% { opacity: 0.6; }
+  25% { opacity: 0.7; }
+  40% { opacity: 0.8; }
+  50% { opacity: 1; }
+  60% { opacity: 0.8; }
+  75% { opacity: 0.7 ; }
+  90% { opacity: 0.6; }
+  100% { opacity: 0.5; }
+}
+
+#cupcake {
+  -webkit-animation: pulse 3s infinite ease-in-out;
+  -o-animation: pulse 3s infinite ease-in-out;
+  -ms-animation: pulse 3s infinite ease-in-out; 
+  -moz-animation: pulse 3s infinite ease-in-out; 
+  animation: pulse 3s infinite ease-in-out;
+}
