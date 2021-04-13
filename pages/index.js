@@ -4,6 +4,7 @@ import { Jumbotron, Button } from "react-bootstrap";
 import { FaInstagramSquare } from "react-icons/fa";
 import Fade from "react-reveal/Fade";
 import Layout from "../components/layout";
+import Slideshow from "../components/slideshow";
 import Menu from "../components/menu";
 import ContactForm from "../components/contactForm";
 import { smoothScroll } from "../util";
@@ -70,7 +71,7 @@ export default function Home() {
             </p>
           </div>
         </Jumbotron>
-        <Jumbotron fluid style={{ ...styles.section, backgroundColor: "#ff80c0" }} id="about">
+        <Jumbotron fluid style={{ ...styles.section, backgroundColor: "#5BC3EB" }} id="about">
           <img
             src="/images/cupcake.png"
             alt="Cupcake"
@@ -83,12 +84,15 @@ export default function Home() {
             </p>
           </div>
         </Jumbotron>
+        <Jumbotron fluid style={{ ...styles.section, backgroundColor: "#36382E" }}>
+          <Slideshow />
+        </Jumbotron>
       </Fade>
-      <Jumbotron fluid style={{ ...styles.section, backgroundColor: "#d1aed7" }} id="menu">
+      <Jumbotron fluid style={{ ...styles.section, backgroundColor: "#F06449" }} id="menu">
         <h1>Our Delicious Menu</h1>
         <Menu />
       </Jumbotron>
-      <Jumbotron id="contact" fluid style={{ paddingTop: 0, marginBottom: 0, backgroundColor: "#bac5e2" }}>
+      <Jumbotron id="contact" fluid style={{ paddingTop: 0, marginBottom: 0, backgroundColor: "#DADAD9" }}>
         <img src="/images/melting.png" alt="Melting Chocolate" style={{ width: "100%" }} />
         <div style={styles.section}>
           <h1 style={styles.sectionHeaderText}>Contact Us</h1>
